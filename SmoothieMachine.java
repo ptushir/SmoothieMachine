@@ -1,22 +1,61 @@
-package com.java.klarna;
+package com.java.smoothie;
 
 import java.util.Set;
 import java.util.TreeSet;
 
+/**
+ * The Class SmoothieMachine.
+ */
 public class SmoothieMachine {
 
+	/**
+	 * The Enum Menu.
+	 */
 	enum Menu{ 
-		  CLASSIC("strawberry, banana, pineapple, mango, peach, honey"),
-		  FREEZIE("blackberry, blueberry, black currant, grape juice, frozen yogurt"),
-		  GREENIE("green apple, lime, avocado, spinach, ice, apple juice"),
-		  JUST_DESSERTS("banana, ice cream, chocolate, peanut, cherry");
+		  
+  		/** The classic. */
+  		CLASSIC("strawberry, banana, pineapple, mango, peach, honey"),
+		  
+  		/** The freezie. */
+  		FREEZIE("blackberry, blueberry, black currant, grape juice, frozen yogurt"),
+		  
+  		/** The greenie. */
+  		GREENIE("green apple, lime, avocado, spinach, ice, apple juice"),
+		  
+  		/** The just desserts. */
+  		JUST_DESSERTS("banana, ice cream, chocolate, peanut, cherry");
 	  
-		  private String selectedItem;
-		  private Menu(String selectedItem) { this.selectedItem = selectedItem; }
-		  public String getSelectedOrder() { return selectedItem; } 
-		  public void setSelectedDrink(String item) { this.selectedItem = item;}
+		  /** The selected item. */
+  		private String selectedItem;
+		  
+  		/**
+  		 * Instantiates a new menu.
+  		 *
+  		 * @param selectedItem the selected item
+  		 */
+  		private Menu(String selectedItem) { this.selectedItem = selectedItem; }
+		  
+  		/**
+  		 * Gets the selected order.
+  		 *
+  		 * @return the selected order
+  		 */
+  		public String getSelectedOrder() { return selectedItem; } 
+		  
+  		/**
+  		 * Sets the selected drink.
+  		 *
+  		 * @param item the new selected drink
+  		 */
+  		public void setSelectedDrink(String item) { this.selectedItem = item;}
 	  }
 	 
+	/**
+	 * Ingredients.
+	 *
+	 * @param order the order
+	 * @return the string
+	 */
 	public String ingredients(String order) {
 		String ingredients = "";
 		String selectedItem;
@@ -42,7 +81,7 @@ public class SmoothieMachine {
 	        	selectedIngredients = Menu.JUST_DESSERTS.getSelectedOrder();
 		          break;
 	        default:
-	        	throw new IllegalArgumentException("selected order not available");
+	        	throw new IllegalArgumentException("Selected order not available");
 	        }
 	        
 	        Set<String> sortedIngredients = new TreeSet<>();
@@ -58,7 +97,7 @@ public class SmoothieMachine {
 							sortedIngredients.remove(allergicIngredient);
 						}
 					} else {
-						throw new IllegalArgumentException("additional ingredient not supported");
+						throw new IllegalArgumentException("Additional ingredient not supported");
 					}
 				}
 			}
